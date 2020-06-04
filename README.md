@@ -1,4 +1,4 @@
 ## Wordpress installation via ansible playbook 
-persian Wordpress , LEMP  installation 
+Persian Wordpress & LEMP  installation 
 ### how to run
-`cd group_vars/all` and customize your wordpress. then  `ansible-playbook main.yml`
+`cd group_vars/all` and customize your installation. then  `ansible-playbook main.yml`
