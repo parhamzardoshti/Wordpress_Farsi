@@ -1,0 +1,43 @@
+---
+
+- name: Install php7 dependencies
+  yum:
+    name:
+       - epel-release
+       - yum-utils
+    state: latest
+
+- name: install remi from remote
+  yum:
+    name:
+    - http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+- name: enable remi 7 repo
+  command: yum-config-manager --enable remi-php72
+
+- name:  Install php7 packages
+  yum:
+    name:
+    - php-cli
+    - php-fpm
+    - php-mysql
+    - php-json
+    - php-opcache
+    - php-mbstring
+    - php-xml
+    - php-gd
+    - php-curl
+
+- name: Disable default pool
+  command: mv /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.disabled creates=/etc/php-fpm.d/www.disabled
+ 
+- name: Copy www.conf config file
+  template: 
+    src: www.conf.j2
+    dest: /etc/php-fpm.d/www.conf
+  notify: start php-fpm
+
+- name: privilege /var/lib/php
+  command: chown -R nginx /var/lib/php
+  notify: restart php-fpm
+

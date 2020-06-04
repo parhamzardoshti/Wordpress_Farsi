@@ -1,0 +1,11 @@
+---
+- name: Install Wordpress, Mariadb, Nginx, and PHP_FPM
+  hosts: server
+  remote_user: root
+
+  roles:
+ #   - common
+ #   - mariadb
+ #   - nginx
+    - php-fpm
+    - wordpress
