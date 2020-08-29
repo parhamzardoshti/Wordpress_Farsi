@@ -1,0 +1,1 @@
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/home/parham/vagrant/Wordpress_Farsi","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
